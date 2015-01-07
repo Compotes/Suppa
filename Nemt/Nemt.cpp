@@ -8,9 +8,9 @@ int blocks; // zistim pocet blokov
 int left_point_goal, right_point_goal , x_point_goal;
 int goal_color;
 
-Nemt::Nemt() {
+Nemt::Nemt(int color) {
     pixy.init();
-    goal_color = 3;
+    goal_color = color;
 }
 
 int Nemt::giveX() {
