@@ -11,7 +11,7 @@
 class Nemt
 {
 	public:
-  		Nemt();
+  		Nemt(int color);
   		int giveX();
   		int giveLeft();
   		int giveRight();
