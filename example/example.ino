@@ -1,14 +1,14 @@
 #include <Nemt.h>
 
-Nemt n(3); // we set number of color 1-7
+Nemt n(3); // we set number of color 1-7 // we set counter 
 
 void setup() {
-  
+  Serial.begin(9600);
 }
 
 void loop() {
-  n.giveX(); // return type = int; vrati X suradnicu objektu v momente ked sa zavola
-  n.giveRight(); // return type = int; vrati Pravy bod objektu v momente ked sa zavola
-  n.giveLeft(); // return type = int; vrati Lavy bod objektu v momente ked sa zavola
+  Serial.println(n.giveX()); // return type = int; x point
+  n.giveRight(); // return type = int; right point
+  n.giveLeft(); // return type = int; left point
 }
 
