@@ -4,44 +4,67 @@
 
 Pixy pixy;
 int goal_number;  
-int blocks; // zistim pocet blokov
+int blocks;
 int left_point_goal, right_point_goal , x_point_goal;
 int goal_color;
+int counter;
+int counter_limit;
 
-Nemt::Nemt(int color) {
-    pixy.init();
-    goal_color = color;
+Nemt::Nemt(int color, int cl) {
+    this->pixy.init();
+    this->counter_limit = cl;
+    this->counter = 0;
+    this->goal_color = color;
 }
 
 int Nemt::giveX() {
-    giveV();
-    return x_point_goal;
+    this->giveV();
+    return this->x_point_goal;
 }
 
 int Nemt::giveLeft() {
-    giveV();
-    return left_point_goal;
+    this->giveV();
+    return this->left_point_goal;
 }
 
 int Nemt::giveRight() {
-    giveV();
-    return right_point_goal;
+    this->giveV();
+    return this->right_point_goal;
 }
 
 void Nemt::giveV() {
-    blocks = pixy.getBlocks();
-    if(blocks) // ak vidime aspon jeden blok tak je to super 
+    this->blocks = this->pixy.getBlocks();
+    if(this->blocks) // if we see at least one objects we can be happy 
     {
-        for (int i = 0; i < blocks; i++) // zistime kvalitnym forcyklom kolko objektov mame
+        for (int i = 0; i < this->blocks; i++) // runnig through all objects 
         {
-            if(pixy.blocks[i].signature == goal_color && pixy.blocks[i].width > 15) // ak sa nam farba objektu zhoduje s KONSTANTOU GOAL_COLOR tak vieme ze je to brana 
+            // if object i == goal_color and is bigger that captured object that it is object with bigger priority
+            if(this->pixy.blocks[i].signature == this->goal_color && this->pixy.blocks[i].width > this->pixy.blocks[this->goal_number].width) 
             { 
-                goal_number = i; // nastavime hodnotu brany
+                this->goal_number = i; // we set color of goal
+            }            
+        } 
+
+        this->x_point_goal = this->pixy.blocks[this->goal_number].x;
+        this->left_point_goal = this->pixy.blocks[goal_number].x - this->pixy.blocks[goal_number].width/2; // left pint of goal // lpg = x - width/2    
+        this->right_point_goal = this->pixy.blocks[goal_number].x + this->pixy.blocks[goal_number].width/2; // right point of goal // rpg = x + width/2   
+        this->counter = 0;
+    } else {
+        this->counter++;
+        
+        if (this->counter > this->counter_limit) {
+            if(this->x_point_goal > 150) {
+                this->x_point_goal = 404;
+                this->left_point_goal = 404;
+                this->right_point_goal = 404;
+                this->counter = 0;
+            } else {
+                this->x_point_goal = -404;
+                this->left_point_goal = -404;
+                this->right_point_goal = -404;
+                this->counter = 0;
             }
         }
-        x_point_goal = pixy.blocks[goal_number].x;
-        left_point_goal = pixy.blocks[goal_number].x - pixy.blocks[goal_number].width/2; // nacitam lavy bod brany // lpg = x - sirka/2    
-        right_point_goal = pixy.blocks[goal_number].x + pixy.blocks[goal_number].width/2; // nacitam pravy bod brany // rpg = x + sirka/2   
     }
 }
 
