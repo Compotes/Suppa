@@ -11,13 +11,13 @@
 class Nemt
 {
 	public:
-  		Nemt(int color, int cl);
-  		int giveX();
-  		int giveLeft();
-  		int giveRight();
+  		Nemt(int cl = 50);
+  		int giveX(int x);
+  		int giveLeft(int x);
+  		int giveRight(int x);
   	private:
   		Pixy pixy;
-  		void giveV();	
+  		void giveV(int block_color);	
     	int goal_number;  
 		  int blocks;
 		  int left_point_goal, right_point_goal , x_point_goal;
