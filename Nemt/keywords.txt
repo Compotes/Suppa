@@ -1,5 +1,5 @@
 Nemt	KEYWORD1
-giveV 	KEYWORD2
-giveX	KEYWORD2
-giveRight	KEYWORD2
-giveLeft	KEYWORD2
+give_v 	KEYWORD2
+give_x	KEYWORD2
+give_right	KEYWORD2
+give_left	KEYWORD2
