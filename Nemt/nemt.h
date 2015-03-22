@@ -4,6 +4,8 @@
 #include <SPI.h>  
 #include <Pixy.h>
 
+#define CAMERA_CENTER 160
+
 class Nemt {
 public:
     Nemt(int cl = 50);
