@@ -7,10 +7,11 @@ void setup() {
 }
 
 void loop() {
-  Serial.print(n.give_left(3));
-  Serial.print(" ");
-  Serial.print(n.give_x(3));
-  Serial.print(" ");
-  Serial.println(n.give_right(3));
+  //Serial.print(n.give_left(3));
+  //Serial.print(" ");
+  Serial.println(n.give_x(3));
+  //Serial.print(" ");
+  //Serial.println(n.give_right(3));
+  delay(100);
 }
 

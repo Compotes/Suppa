@@ -4,11 +4,15 @@
 #include <SPI.h>  
 #include <Pixy.h>
 
+#define DEFAULT_COUNTER_LIMIT 50
+#define CAMERA_HORIZONTAL_ANGLE 70
+#define CAMERA_WIDTH 320
 #define CAMERA_CENTER 160
+#define NOT_FOUND 404
 
 class Nemt {
 public:
-    Nemt(int cl = 50);
+    Nemt(int cl = DEFAULT_COUNTER_LIMIT);
     int give_x(int block_color);
     int give_left(int block_color);
     int give_right(int block_color);
