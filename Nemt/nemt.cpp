@@ -9,8 +9,9 @@ Nemt::Nemt(int cl) {
 }
 
 inline int Nemt::convert_angle(int return_value) {
-    if (return_value < 404 && return_value > (-404)) {
-        return (return_value * 70 / 320) - 35;
+    if (return_value < NOT_FOUND && return_value > -NOT_FOUND) {
+        return (return_value * CAMERA_HORIZONTAL_ANGLE / CAMERA_WIDTH) -
+               CAMERA_HORIZONTAL_ANGLE / 2;
     } else {
         return return_value;
     }
@@ -54,15 +55,15 @@ void Nemt::give_v(int block_color) {
     } else {
         ++counter;
         if (counter > counter_limit) {
-            if (x_point_goal > 150) {
-                x_point_goal = 404;
-                left_point_goal = 404;
-                right_point_goal = 404;
+            if (x_point_goal > CAMERA_CENTER) {
+                x_point_goal = NOT_FOUND;
+                left_point_goal = NOT_FOUND;
+                right_point_goal = NOT_FOUND;
                 counter = 0;
             } else {
-                x_point_goal = -404;
-                left_point_goal = -404;
-                right_point_goal = -404;
+                x_point_goal = -NOT_FOUND;
+                left_point_goal = -NOT_FOUND;
+                right_point_goal = -NOT_FOUND;
                 counter = 0;
             }
         }
