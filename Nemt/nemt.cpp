@@ -1,5 +1,5 @@
 #include <nemt.h>
-#include <SPI.h>  
+#include <SPI.h>
 #include <Pixy.h>
 
 Nemt::Nemt(int cl) {
@@ -8,19 +8,27 @@ Nemt::Nemt(int cl) {
     counter = 0;
 }
 
+inline int Nemt::convert_angle(int return_value) {
+    if (return_value < 404 && return_value > (-404)) {
+        return (return_value * 70 / 320) - 35;
+    } else {
+        return return_value;
+    }
+}
+
 int Nemt::give_x(int block_color) {
     give_v(block_color);
-    return x_point_goal;
+    return convert_angle(x_point_goal);
 }
 
 int Nemt::give_left(int block_color) {
     give_v(block_color);
-    return left_point_goal;
+    return convert_angle(left_point_goal);
 }
 
 int Nemt::give_right(int block_color) {
     give_v(block_color);
-    return right_point_goal;
+    return convert_angle(right_point_goal);
 }
 
 void Nemt::give_v(int block_color) {
@@ -45,7 +53,6 @@ void Nemt::give_v(int block_color) {
         counter = 0;
     } else {
         ++counter;
-        
         if (counter > counter_limit) {
             if (x_point_goal > 150) {
                 x_point_goal = 404;
