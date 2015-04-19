@@ -7,8 +7,10 @@ void setup() {
 }
 
 void loop() {
-  n.give_x(3); // return type int // arg1 is color in this case it's yellow
-  n.give_right(1); // color = red
-  n.give_left(1); // color = red
+  Serial.print(n.give_left(3));
+  Serial.print(" ");
+  Serial.print(n.give_x(3));
+  Serial.print(" ");
+  Serial.println(n.give_right(3));
 }
 

@@ -15,6 +15,7 @@ public:
 private:
     Pixy pixy;
     void give_v(int block_color);
+    inline int convert_angle(int return_value);
     int goal_number;
     int blocks;
     int left_point_goal, right_point_goal , x_point_goal;
