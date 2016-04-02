@@ -1,4 +1,4 @@
-Nemt	KEYWORD1
+Suppa	KEYWORD1
 give_v 	KEYWORD2
 give_x	KEYWORD2
 give_right	KEYWORD2

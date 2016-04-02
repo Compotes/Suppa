@@ -2,18 +2,19 @@
 #include <SPI.h>
 #include <Pixy.h>
 
-Suppa::Suppa(int cl) {
+Suppa::Suppa(int ori, int cl) {
     pixy.init();
     counter_limit = cl;
     counter = 0;
+    orientation = ori * (-1);
 }
 
 inline int Suppa::convert_angle(int return_value) {
     if (return_value < NOT_FOUND && return_value > -NOT_FOUND) {
-        return (return_value * CAMERA_HORIZONTAL_ANGLE / CAMERA_WIDTH) -
-               CAMERA_HORIZONTAL_ANGLE / 2;
+        return orientation * ((return_value * CAMERA_HORIZONTAL_ANGLE / CAMERA_WIDTH) -
+               CAMERA_HORIZONTAL_ANGLE / 2);
     } else {
-        return return_value;
+        return orientation * return_value;
     }
 }
 
